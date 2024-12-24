@@ -26,7 +26,7 @@
 //     }
 // }
 
-var color = "#008080";
+var color = "#ff0080";
 
 function openColorPicker() {
     var window = document.getElementById("colorpick");
@@ -46,7 +46,7 @@ function setColor() {
 }
 
 function resetColor() {
-    color = "#008080";
+    color = "#ff0080";
     openColorPicker();
 }
 
@@ -67,7 +67,7 @@ async function canvas(seconds, minutes, hours) {
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.arc(viewWidth / 2, viewHeight / 2, 250, 0, ((minutes - 1) / 60) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, 200, 0, ((minutes - 1) / 60) * 2 * Math.PI)
     ctx.stroke()
 
     ctx.beginPath()
