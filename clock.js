@@ -36,7 +36,7 @@ async function canvas(seconds, minutes, hours) {
     
     canvas.width = viewWidth
     canvas.height = viewHeight
-    ctx.strokeStyle = "blue";
+    ctx.strokeStyle = "#008080";
     ctx.lineWidth = 10
 
     ctx.beginPath()
@@ -52,7 +52,7 @@ async function canvas(seconds, minutes, hours) {
     ctx.stroke()
 }
 
-function setOpacity(wheel, time, maximum) {
+function setTextOpacity(wheel, time, maximum) {
     // if (!(wheel == "second")) {
     // }
     time -= 1;
@@ -73,7 +73,7 @@ function setYearValue(yearNum) {
     }
 }
 
-function setDate() {
+function setDateText() {
     const date = new Date();
 
     let year = date.getFullYear();
@@ -97,16 +97,16 @@ function setDate() {
     document.getElementById("minute").style.translate = `0px ${(30 - minutes) * 100}px`;
     document.getElementById("second").style.translate = `0px ${(30 - seconds) * 100}px`;
 
-    setOpacity("month", month, 12);
-    setOpacity("day", day, 31);
-    setOpacity("year", 6, 11);
-    setOpacity("hour", hours, 24);
-    setOpacity("minute", minutes, 60);
-    setOpacity("second", seconds, 60);
+    setTextOpacity("month", month, 12);
+    setTextOpacity("day", day, 31);
+    setTextOpacity("year", 6, 11);
+    setTextOpacity("hour", hours, 24);
+    setTextOpacity("minute", minutes, 60);
+    setTextOpacity("second", seconds, 60);
 
     canvas(seconds, minutes, hours)
 }
 
 
-setDate()
-setInterval(setDate, 1);
+setDateText()
+setInterval(setDateText, 1);
