@@ -26,6 +26,29 @@
 //     }
 // }
 
+var color = "#008080";
+
+function openColorPicker() {
+    var window = document.getElementById("colorpick");
+
+    if (window.style.display == "block") {
+        window.style.display = "none";
+    }
+    else {
+        window.style.display = "block";
+    }
+}
+
+function setColor() {
+    var picker = document.getElementById("picker");
+    color = picker.value;
+    openColorPicker();
+}
+
+function resetColor() {
+    color = "#008080";
+    openColorPicker();
+}
 
 async function canvas(seconds, minutes, hours) {
     const canvas = document.getElementById("canvas");
@@ -33,22 +56,22 @@ async function canvas(seconds, minutes, hours) {
 
     var viewWidth = document.documentElement.clientWidth
     var viewHeight = document.documentElement.clientHeight
-    
+
     canvas.width = viewWidth
     canvas.height = viewHeight
-    ctx.strokeStyle = "#008080";
+    ctx.strokeStyle = color;
     ctx.lineWidth = 10
 
     ctx.beginPath()
-    ctx.arc(viewWidth/2, viewHeight/2, 150, 0, ((seconds - 1) / 60) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, 150, 0, ((seconds - 1) / 60) * 2 * Math.PI)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.arc(viewWidth/2, viewHeight/2, 250, 0, ((minutes - 1) / 60) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, 250, 0, ((minutes - 1) / 60) * 2 * Math.PI)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.arc(viewWidth/2, viewHeight/2, 300, 0, ((hours - 1) / 60) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, 300, 0, ((hours - 1) / 24) * 2 * Math.PI)
     ctx.stroke()
 }
 

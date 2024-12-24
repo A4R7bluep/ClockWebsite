@@ -16,6 +16,18 @@
     <p>&nbsp;-</p> -->
     <canvas id="canvas">
     </canvas>
+
+    <button id="opencolor" type="button"><img src="chevron-down.svg" onclick="openColorPicker()"></button>
+
+    <div id="colorpick">
+        <label for="picker">Input color for arcs:</label>
+        <input type="color" name="picker" id="picker" value="#008080" enabled>
+        <br>
+        <br>
+        <button type="button" id="setcolor" onclick="setColor()">Set Color</button>
+        <button type="button" id="reset" onclick="resetColor()">Reset Color</button>
+    </div>
+
     <p>-</p>
     <div id="clock">
         <div id="month" class="wheel">
