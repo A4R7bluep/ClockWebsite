@@ -57,21 +57,26 @@ async function canvas(seconds, minutes, hours) {
     var viewWidth = document.documentElement.clientWidth
     var viewHeight = document.documentElement.clientHeight
 
+    /// Draw Clock Face
     canvas.width = viewWidth
     canvas.height = viewHeight
     ctx.strokeStyle = color;
     ctx.lineWidth = 10
 
+    let vw = Math.max(document.documentElement.clientWidth, window.innerWidth)
+
+    if (vw < 1000) {ctx.lineWidth = 5}
+
     ctx.beginPath()
-    ctx.arc(viewWidth / 2, viewHeight / 2, 150, 0, ((seconds - 1) / 60) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, vw/12, -Math.PI/2, (((seconds - 1) / 60) * 2 * Math.PI) -Math.PI/2)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.arc(viewWidth / 2, viewHeight / 2, 200, 0, ((minutes - 1) / 60) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, vw/8, -Math.PI/2, (((minutes - 1) / 60) * 2 * Math.PI) -Math.PI/2)
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.arc(viewWidth / 2, viewHeight / 2, 300, 0, ((hours - 1) / 24) * 2 * Math.PI)
+    ctx.arc(viewWidth / 2, viewHeight / 2, vw/5, -Math.PI/2, (((hours - 1) / 24) * 2 * Math.PI) -Math.PI/2)
     ctx.stroke()
 }
 
@@ -113,12 +118,12 @@ function setDateText() {
     // var fulldate = `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`;
     // document.getElementById("clock").innerHTML = fulldate;
     setYearValue(year);
-    document.getElementById("month").style.translate = `0px ${(30 - month) * 100}px`;
-    document.getElementById("day").style.translate = `0px ${(30 - day) * 100}px`;
-    document.getElementById("year").style.translate = `0px ${(30 - 6) * 100}px`;
-    document.getElementById("hour").style.translate = `0px ${(30 - hours) * 100}px`;
-    document.getElementById("minute").style.translate = `0px ${(30 - minutes) * 100}px`;
-    document.getElementById("second").style.translate = `0px ${(30 - seconds) * 100}px`;
+    document.getElementById("month").style.translate = `0px ${(30 - month) * 5}vw`;
+    document.getElementById("day").style.translate = `0px ${(30 - day) * 5}vw`;
+    document.getElementById("year").style.translate = `0px ${(30 - 6) * 5}vw`;
+    document.getElementById("hour").style.translate = `0px ${(30 - hours) * 5}vw`;
+    document.getElementById("minute").style.translate = `0px ${(30 - minutes) * 5}vw`;
+    document.getElementById("second").style.translate = `0px ${(30 - seconds) * 5}vw`;
 
     setTextOpacity("month", month, 12);
     setTextOpacity("day", day, 31);
